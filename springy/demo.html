@@ -1,0 +1,1378 @@
+<html>
+<body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script src="springy.js"></script>
+<script src="springyui.js"></script>
+<script>
+var graph = new Springy.Graph();
+var nodeHash = new Map()
+
+function getNode(label) {
+  if(nodeHash.has(label)){
+    return nodeHash.get(label)
+  }else{
+    const node = graph.newNode({
+      label: label === '' ? 'どっとはらい' : label,
+      font: '8px Osaka, sans-serif'
+    })
+    nodeHash.set(label, node)
+    return node
+  }
+}
+
+function add(subject, object) {
+  if(object === '') return
+
+  const left = getNode(subject)
+
+
+  const right = getNode(object)
+
+
+  graph.newEdge(left, right, {color: object === '' ? '#EB6841' : '#00A0B0' });
+}
+
+// add('ノードの', '名前は')
+// add('ノードの', '次に')
+
+const dict = {
+  "edges": [
+    {
+      "subject": "0",
+      "object": "."
+    },
+    {
+      "subject": "1",
+      "object": "文字以上"
+    },
+    {
+      "subject": "7",
+      "object": "."
+    },
+    {
+      "subject": "ソース",
+      "object": "ノードと"
+    },
+    {
+      "subject": "ノードと",
+      "object": "ターゲット"
+    },
+    {
+      "subject": "ターゲット",
+      "object": "ノードが"
+    },
+    {
+      "subject": "ノードが",
+      "object": "同一の"
+    },
+    {
+      "subject": "同一の",
+      "object": "エッジは"
+    },
+    {
+      "subject": "エッジは",
+      "object": "一つしか"
+    },
+    {
+      "subject": "一つしか",
+      "object": "作れるない"
+    },
+    {
+      "subject": "作れるない",
+      "object": ""
+    },
+    {
+      "subject": "ノードに",
+      "object": "戻る"
+    },
+    {
+      "subject": "戻る",
+      "object": "エッジは"
+    },
+    {
+      "subject": "既存の",
+      "object": "エッジを"
+    },
+    {
+      "subject": "エッジを",
+      "object": "ソース"
+    },
+    {
+      "subject": "戻るように",
+      "object": "付け替えると"
+    },
+    {
+      "subject": "付け替えると",
+      "object": "消える"
+    },
+    {
+      "subject": "消える",
+      "object": ""
+    },
+    {
+      "subject": "グラフ",
+      "object": "上の"
+    },
+    {
+      "subject": "上の",
+      "object": "ノードを"
+    },
+    {
+      "subject": "ノードを",
+      "object": "クリック"
+    },
+    {
+      "subject": "クリック",
+      "object": ""
+    },
+    {
+      "subject": "強調",
+      "object": "するれること"
+    },
+    {
+      "subject": "するれること",
+      "object": ""
+    },
+    {
+      "subject": "テーブル",
+      "object": "上の"
+    },
+    {
+      "subject": "それ以外の",
+      "object": "ノード"
+    },
+    {
+      "subject": "ノード",
+      "object": "、"
+    },
+    {
+      "subject": "、",
+      "object": "エッジが"
+    },
+    {
+      "subject": "エッジが",
+      "object": "強調"
+    },
+    {
+      "subject": "するれるないこと",
+      "object": ""
+    },
+    {
+      "subject": "Esc",
+      "object": "キーを"
+    },
+    {
+      "subject": "キーを",
+      "object": "クリック"
+    },
+    {
+      "subject": "するれるているないこと",
+      "object": ""
+    },
+    {
+      "subject": "グラフの",
+      "object": "エッジと"
+    },
+    {
+      "subject": "エッジと",
+      "object": "ノード以外の"
+    },
+    {
+      "subject": "ノード以外の",
+      "object": "場所を"
+    },
+    {
+      "subject": "場所を",
+      "object": "クリック"
+    },
+    {
+      "subject": "ノードの",
+      "object": "テキストを"
+    },
+    {
+      "subject": "テキストを",
+      "object": "1"
+    },
+    {
+      "subject": "文字以上",
+      "object": "変更"
+    },
+    {
+      "subject": "変更",
+      "object": ""
+    },
+    {
+      "subject": "テキストも",
+      "object": "変更"
+    },
+    {
+      "subject": "npm",
+      "object": "run"
+    },
+    {
+      "subject": "run",
+      "object": "stub"
+    },
+    {
+      "subject": "stub",
+      "object": "コマンドを"
+    },
+    {
+      "subject": "コマンドを",
+      "object": "実行"
+    },
+    {
+      "subject": "実行",
+      "object": "するて"
+    },
+    {
+      "subject": "するて",
+      "object": "stub"
+    },
+    {
+      "subject": "サーバーを",
+      "object": "起動"
+    },
+    {
+      "subject": "起動",
+      "object": ""
+    },
+    {
+      "subject": "lookup",
+      "object": "ボタンを"
+    },
+    {
+      "subject": "ボタンを",
+      "object": "押す"
+    },
+    {
+      "subject": "押す",
+      "object": ""
+    },
+    {
+      "subject": "termに",
+      "object": "値が"
+    },
+    {
+      "subject": "値が",
+      "object": "入ること"
+    },
+    {
+      "subject": "入ること",
+      "object": ""
+    },
+    {
+      "subject": "termの",
+      "object": "値を"
+    },
+    {
+      "subject": "値を",
+      "object": "1"
+    },
+    {
+      "subject": "mappingsの",
+      "object": "termの"
+    },
+    {
+      "subject": "チェック",
+      "object": "ボックスの"
+    },
+    {
+      "subject": "ボックスの",
+      "object": "チェックを"
+    },
+    {
+      "subject": "チェックを",
+      "object": "外す"
+    },
+    {
+      "subject": "外す",
+      "object": ""
+    },
+    {
+      "subject": "mappingsから",
+      "object": "チェックを"
+    },
+    {
+      "subject": "外すた",
+      "object": "termの"
+    },
+    {
+      "subject": "消えること",
+      "object": ""
+    },
+    {
+      "subject": "入れる",
+      "object": ""
+    },
+    {
+      "subject": "入れるた",
+      "object": "termの"
+    },
+    {
+      "subject": "表示",
+      "object": "するれること"
+    },
+    {
+      "subject": "次の",
+      "object": "ノードが"
+    },
+    {
+      "subject": "するれるていること",
+      "object": ""
+    },
+    {
+      "subject": "focus",
+      "object": "するれるていること"
+    },
+    {
+      "subject": "エッジの",
+      "object": "テキストを"
+    },
+    {
+      "subject": "空に",
+      "object": "変更"
+    },
+    {
+      "subject": "テキストが",
+      "object": "消えること"
+    },
+    {
+      "subject": "*に",
+      "object": "なること"
+    },
+    {
+      "subject": "なること",
+      "object": ""
+    },
+    {
+      "subject": "初期",
+      "object": "表示で"
+    },
+    {
+      "subject": "表示で",
+      "object": "*のものを"
+    },
+    {
+      "subject": "*のものを",
+      "object": "空に"
+    },
+    {
+      "subject": "同じ",
+      "object": "テーブル"
+    },
+    {
+      "subject": "選択",
+      "object": ""
+    },
+    {
+      "subject": "左上に",
+      "object": "フォーカスアイコンが"
+    },
+    {
+      "subject": "フォーカスアイコンが",
+      "object": "表示"
+    },
+    {
+      "subject": "フォーカスアイコンを",
+      "object": "ホバー"
+    },
+    {
+      "subject": "ホバー",
+      "object": ""
+    },
+    {
+      "subject": "アイコンの",
+      "object": "背景が"
+    },
+    {
+      "subject": "背景が",
+      "object": "灰色の"
+    },
+    {
+      "subject": "灰色の",
+      "object": "四角に"
+    },
+    {
+      "subject": "四角に",
+      "object": "なるないこと"
+    },
+    {
+      "subject": "なるないこと",
+      "object": ""
+    },
+    {
+      "subject": "マウス",
+      "object": "カーソルが"
+    },
+    {
+      "subject": "カーソルが",
+      "object": "pointerに"
+    },
+    {
+      "subject": "pointerに",
+      "object": "なるない"
+    },
+    {
+      "subject": "なるない",
+      "object": ""
+    },
+    {
+      "subject": "中",
+      "object": "ノードから"
+    },
+    {
+      "subject": "ノードから",
+      "object": "生えるている"
+    },
+    {
+      "subject": "生えるている",
+      "object": "エッジが"
+    },
+    {
+      "subject": "フォーカスアイコンから",
+      "object": "マウス"
+    },
+    {
+      "subject": "カーソルを",
+      "object": "外す"
+    },
+    {
+      "subject": "するた",
+      "object": "ノードから"
+    },
+    {
+      "subject": "強調が",
+      "object": "消えること"
+    },
+    {
+      "subject": "解除",
+      "object": ""
+    },
+    {
+      "subject": "テーブルの",
+      "object": "input"
+    },
+    {
+      "subject": "input",
+      "object": "要素を"
+    },
+    {
+      "subject": "要素を",
+      "object": "クリック"
+    },
+    {
+      "subject": "要素の",
+      "object": "フォーカスが"
+    },
+    {
+      "subject": "フォーカスが",
+      "object": "解除"
+    },
+    {
+      "subject": "選択が",
+      "object": "解除"
+    },
+    {
+      "subject": "編集",
+      "object": "アイコンを"
+    },
+    {
+      "subject": "アイコンを",
+      "object": "クリック"
+    },
+    {
+      "subject": "エッジに",
+      "object": "編集"
+    },
+    {
+      "subject": "用",
+      "object": "input"
+    },
+    {
+      "subject": "要素が",
+      "object": "表示"
+    },
+    {
+      "subject": "元の",
+      "object": "テキストと"
+    },
+    {
+      "subject": "テキストと",
+      "object": "テーブルと"
+    },
+    {
+      "subject": "テーブルと",
+      "object": "同じだあること"
+    },
+    {
+      "subject": "同じだあること",
+      "object": ""
+    },
+    {
+      "subject": "選択を",
+      "object": "解除"
+    },
+    {
+      "subject": "テキスト",
+      "object": "値が"
+    },
+    {
+      "subject": "最後の",
+      "object": "値と"
+    },
+    {
+      "subject": "値と",
+      "object": "同じだあること"
+    },
+    {
+      "subject": "する",
+      "object": ""
+    },
+    {
+      "subject": "空だあること",
+      "object": ""
+    },
+    {
+      "subject": "追加",
+      "object": ""
+    },
+    {
+      "subject": "tab",
+      "object": "キーを"
+    },
+    {
+      "subject": "モードだない",
+      "object": "なること"
+    },
+    {
+      "subject": "するれるたままだあること",
+      "object": ""
+    },
+    {
+      "subject": "表示では",
+      "object": "エッジの"
+    },
+    {
+      "subject": "中央に",
+      "object": "編集"
+    },
+    {
+      "subject": "アイコンが",
+      "object": "表示"
+    },
+    {
+      "subject": "アイコンと",
+      "object": "削除"
+    },
+    {
+      "subject": "削除",
+      "object": "アイコンが"
+    },
+    {
+      "subject": "中の",
+      "object": "エッジを"
+    },
+    {
+      "subject": "再度",
+      "object": "クリック"
+    },
+    {
+      "subject": "右",
+      "object": "上に"
+    },
+    {
+      "subject": "上に",
+      "object": "削除"
+    },
+    {
+      "subject": "両端の",
+      "object": "ノードが"
+    },
+    {
+      "subject": "アイコンから",
+      "object": "マウス"
+    },
+    {
+      "subject": "エンドポイトを",
+      "object": "他の"
+    },
+    {
+      "subject": "他の",
+      "object": "ノードに"
+    },
+    {
+      "subject": "D",
+      "object": "&"
+    },
+    {
+      "subject": "&",
+      "object": "D"
+    },
+    {
+      "subject": "作成",
+      "object": "するた"
+    },
+    {
+      "subject": "ノードの上に",
+      "object": "フォーカスアイコンが"
+    },
+    {
+      "subject": "非",
+      "object": "focus"
+    },
+    {
+      "subject": "フォーカスアイコンと",
+      "object": "編集"
+    },
+    {
+      "subject": "ノードの上の",
+      "object": "編集"
+    },
+    {
+      "subject": "Add",
+      "object": "Empty"
+    },
+    {
+      "subject": "Empty",
+      "object": "Node"
+    },
+    {
+      "subject": "Node",
+      "object": "ボタンを"
+    },
+    {
+      "subject": "グラフに",
+      "object": "ノードが"
+    },
+    {
+      "subject": "テーブルに",
+      "object": "ノードが"
+    },
+    {
+      "subject": "モードに",
+      "object": "なること"
+    },
+    {
+      "subject": "delete",
+      "object": "ボタンを"
+    },
+    {
+      "subject": "グラフから",
+      "object": "ノードが"
+    },
+    {
+      "subject": "つくた",
+      "object": "エッジが"
+    },
+    {
+      "subject": "テーブルから",
+      "object": "ノードが"
+    },
+    {
+      "subject": "動きが",
+      "object": "止まるまで"
+    },
+    {
+      "subject": "止まるまで",
+      "object": "待つ"
+    },
+    {
+      "subject": "待つ",
+      "object": ""
+    },
+    {
+      "subject": "エンド",
+      "object": "ポイントが"
+    },
+    {
+      "subject": "ポイントが",
+      "object": "ノード"
+    },
+    {
+      "subject": "幅の",
+      "object": "変化に"
+    },
+    {
+      "subject": "変化に",
+      "object": "追従"
+    },
+    {
+      "subject": "追従",
+      "object": "するて"
+    },
+    {
+      "subject": "縁に",
+      "object": "移動"
+    },
+    {
+      "subject": "移動",
+      "object": "すること"
+    },
+    {
+      "subject": "すること",
+      "object": ""
+    },
+    {
+      "subject": "黒字の",
+      "object": "フォーカスアイコンが"
+    },
+    {
+      "subject": "フォーカスアイコンの",
+      "object": "位置が"
+    },
+    {
+      "subject": "位置が",
+      "object": "ずれるないこと"
+    },
+    {
+      "subject": "ずれるないこと",
+      "object": ""
+    },
+    {
+      "subject": "黒字だあること",
+      "object": ""
+    },
+    {
+      "subject": "esc",
+      "object": "キーを"
+    },
+    {
+      "subject": "押すて",
+      "object": "ノードの"
+    },
+    {
+      "subject": "するれるているない",
+      "object": "この"
+    },
+    {
+      "subject": "この",
+      "object": ""
+    },
+    {
+      "subject": "灰色だあること",
+      "object": ""
+    },
+    {
+      "subject": "ラジオ",
+      "object": "ボタンが"
+    },
+    {
+      "subject": "ボタンが",
+      "object": "全て"
+    },
+    {
+      "subject": "全て",
+      "object": "選択"
+    },
+    {
+      "subject": "pgpの",
+      "object": "focusが"
+    },
+    {
+      "subject": "focusが",
+      "object": "消えること"
+    },
+    {
+      "subject": "幅が",
+      "object": "編集"
+    },
+    {
+      "subject": "要素に",
+      "object": "合わせるて"
+    },
+    {
+      "subject": "合わせるて",
+      "object": "広がること"
+    },
+    {
+      "subject": "広がること",
+      "object": ""
+    },
+    {
+      "subject": "ノードは",
+      "object": "選択"
+    },
+    {
+      "subject": "欄の",
+      "object": "ラジオ"
+    },
+    {
+      "subject": "focusに",
+      "object": "選択"
+    },
+    {
+      "subject": "idが",
+      "object": "設定"
+    },
+    {
+      "subject": "設定",
+      "object": "するれるていること"
+    },
+    {
+      "subject": "一番",
+      "object": "上以外の"
+    },
+    {
+      "subject": "上以外の",
+      "object": "ノードの"
+    },
+    {
+      "subject": "するれるたままで",
+      "object": "いること"
+    },
+    {
+      "subject": "いること",
+      "object": ""
+    },
+    {
+      "subject": "Delete",
+      "object": "キーを"
+    },
+    {
+      "subject": "消えるないこと",
+      "object": ""
+    },
+    {
+      "subject": "endpointを",
+      "object": "drag"
+    },
+    {
+      "subject": "drag",
+      "object": ""
+    },
+    {
+      "subject": "部分に",
+      "object": "drop"
+    },
+    {
+      "subject": "drop",
+      "object": ""
+    },
+    {
+      "subject": "pgpから",
+      "object": "削除"
+    },
+    {
+      "subject": "するれるた",
+      "object": "削除"
+    },
+    {
+      "subject": "別の",
+      "object": "ノードに"
+    },
+    {
+      "subject": "更新",
+      "object": "するれること"
+    },
+    {
+      "subject": "sourcepointを",
+      "object": "他の"
+    },
+    {
+      "subject": "pgpに",
+      "object": "追加"
+    },
+    {
+      "subject": "*の",
+      "object": "エッジが"
+    },
+    {
+      "subject": "serverを",
+      "object": "起動"
+    },
+    {
+      "subject": "all",
+      "object": "node"
+    },
+    {
+      "subject": "node",
+      "object": "ボタンを"
+    },
+    {
+      "subject": "genesと",
+      "object": "alzheimer"
+    },
+    {
+      "subject": "alzheimer",
+      "object": "diseaseと"
+    },
+    {
+      "subject": "diseaseと",
+      "object": "bingの"
+    },
+    {
+      "subject": "bingの",
+      "object": "termに"
+    },
+    {
+      "subject": "uriが",
+      "object": "入ること"
+    },
+    {
+      "subject": "ボックスに",
+      "object": "チェックが"
+    },
+    {
+      "subject": "チェックが",
+      "object": "入るていること"
+    },
+    {
+      "subject": "入るていること",
+      "object": ""
+    },
+    {
+      "subject": "mappingsに",
+      "object": "termの"
+    },
+    {
+      "subject": "全",
+      "object": "ノードと"
+    },
+    {
+      "subject": "するているない",
+      "object": "エッジが"
+    },
+    {
+      "subject": "tooltipで",
+      "object": "undefinedが"
+    },
+    {
+      "subject": "undefinedが",
+      "object": "表示"
+    },
+    {
+      "subject": "行を",
+      "object": "ホバー"
+    },
+    {
+      "subject": "sourcepointから",
+      "object": "マウスを"
+    },
+    {
+      "subject": "マウスを",
+      "object": "外す"
+    },
+    {
+      "subject": "空の",
+      "object": "input"
+    },
+    {
+      "subject": "入れるて",
+      "object": "+"
+    },
+    {
+      "subject": "+",
+      "object": "ボタンを"
+    },
+    {
+      "subject": "termが",
+      "object": "入力"
+    },
+    {
+      "subject": "入力",
+      "object": "するた"
+    },
+    {
+      "subject": "値で",
+      "object": "追加"
+    },
+    {
+      "subject": "enter",
+      "object": "キーを"
+    },
+    {
+      "subject": "要素から",
+      "object": "移動"
+    },
+    {
+      "subject": "するないこと",
+      "object": ""
+    },
+    {
+      "subject": "空だない",
+      "object": "input"
+    },
+    {
+      "subject": "termで",
+      "object": "enter"
+    },
+    {
+      "subject": "inputに",
+      "object": "値を"
+    },
+    {
+      "subject": "消えるて",
+      "object": "、"
+    },
+    {
+      "subject": "検索",
+      "object": "結果で"
+    },
+    {
+      "subject": "結果で",
+      "object": "上書き"
+    },
+    {
+      "subject": "上書き",
+      "object": "するれること"
+    },
+    {
+      "subject": "作る",
+      "object": ""
+    },
+    {
+      "subject": "向かう",
+      "object": "エッジを"
+    },
+    {
+      "subject": "Backspace",
+      "object": "キー"
+    },
+    {
+      "subject": "キー",
+      "object": ""
+    },
+    {
+      "subject": "両",
+      "object": "ノードが"
+    },
+    {
+      "subject": "赤で",
+      "object": "強調"
+    },
+    {
+      "subject": "赤のままで",
+      "object": "、"
+    },
+    {
+      "subject": "ピンクで",
+      "object": "強調"
+    },
+    {
+      "subject": "エッジ",
+      "object": "テーブルでは"
+    },
+    {
+      "subject": "テーブルでは",
+      "object": "選択"
+    },
+    {
+      "subject": "するた時に",
+      "object": "、"
+    },
+    {
+      "subject": "ホバーの",
+      "object": "強調"
+    },
+    {
+      "subject": "表示が",
+      "object": "するれるているた"
+    },
+    {
+      "subject": "するれるているた",
+      "object": ""
+    },
+    {
+      "subject": "v",
+      "object": "0"
+    },
+    {
+      "subject": ".",
+      "object": "7"
+    },
+    {
+      "subject": "0で",
+      "object": "対応"
+    },
+    {
+      "subject": "対応",
+      "object": ""
+    },
+    {
+      "subject": "上でも",
+      "object": "選択"
+    },
+    {
+      "subject": "1で",
+      "object": "対応"
+    },
+    {
+      "subject": "選ぶで",
+      "object": "Delete"
+    },
+    {
+      "subject": "消す",
+      "object": "文字が"
+    },
+    {
+      "subject": "文字が",
+      "object": "あるば"
+    },
+    {
+      "subject": "あるば",
+      "object": "編集"
+    },
+    {
+      "subject": "変わること",
+      "object": ""
+    },
+    {
+      "subject": "右の",
+      "object": "削除"
+    },
+    {
+      "subject": "値の",
+      "object": "背景"
+    },
+    {
+      "subject": "背景",
+      "object": "色が"
+    },
+    {
+      "subject": "色が",
+      "object": "変わること"
+    },
+    {
+      "subject": "変わるないこと",
+      "object": ""
+    },
+    {
+      "subject": "find",
+      "object": "term"
+    },
+    {
+      "subject": "term",
+      "object": "of"
+    },
+    {
+      "subject": "of",
+      "object": "all"
+    },
+    {
+      "subject": "bingと",
+      "object": "hogeの"
+    },
+    {
+      "subject": "hogeの",
+      "object": "termに"
+    },
+    {
+      "subject": "名をに",
+      "object": "変更"
+    },
+    {
+      "subject": "test",
+      "object": "/"
+    },
+    {
+      "subject": "/",
+      "object": "lookupErrorTest"
+    },
+    {
+      "subject": "lookupErrorTest",
+      "object": "."
+    },
+    {
+      "subject": "htmlを",
+      "object": "開く"
+    },
+    {
+      "subject": "開く",
+      "object": ""
+    },
+    {
+      "subject": "JavaScirptの",
+      "object": "Errorが"
+    },
+    {
+      "subject": "Errorが",
+      "object": "起きるないこと"
+    },
+    {
+      "subject": "起きるないこと",
+      "object": ""
+    },
+    {
+      "subject": "時の",
+      "object": "pgpの"
+    },
+    {
+      "subject": "tと",
+      "object": "数字だあること"
+    },
+    {
+      "subject": "数字だあること",
+      "object": ""
+    },
+    {
+      "subject": "focusの",
+      "object": "idが"
+    },
+    {
+      "subject": "objectと",
+      "object": "subjectが"
+    },
+    {
+      "subject": "subjectが",
+      "object": "tと"
+    },
+    {
+      "subject": "pgp",
+      "object": "上の"
+    },
+    {
+      "subject": "focusを",
+      "object": "変更"
+    },
+    {
+      "subject": "Safariで",
+      "object": "開く"
+    },
+    {
+      "subject": "テーブルを",
+      "object": "ホバー"
+    },
+    {
+      "subject": "エラーが",
+      "object": "出るないこと"
+    },
+    {
+      "subject": "出るないこと",
+      "object": ""
+    },
+    {
+      "subject": "noNodeTest",
+      "object": "."
+    },
+    {
+      "subject": "グラフが",
+      "object": "空だあること"
+    },
+    {
+      "subject": "グラフを",
+      "object": "クリック"
+    },
+    {
+      "subject": "ターゲットエンドポイントを",
+      "object": "Drag"
+    },
+    {
+      "subject": "Drag",
+      "object": "するて"
+    },
+    {
+      "subject": "Drop",
+      "object": ""
+    },
+    {
+      "subject": "ソースエンドポイントを",
+      "object": "Drag"
+    },
+    {
+      "subject": "残るないこと",
+      "object": ""
+    },
+    {
+      "subject": "無い",
+      "object": "ノードの"
+    },
+    {
+      "subject": "移動に",
+      "object": "エッジが"
+    },
+    {
+      "subject": "ズレるぬについて",
+      "object": "くること"
+    },
+    {
+      "subject": "くること",
+      "object": ""
+    },
+    {
+      "subject": "Dropで",
+      "object": "移動"
+    },
+    {
+      "subject": "できること",
+      "object": ""
+    },
+    {
+      "subject": "すると",
+      "object": "周りの"
+    },
+    {
+      "subject": "周りの",
+      "object": "ノードも"
+    },
+    {
+      "subject": "ノードも",
+      "object": "反応"
+    },
+    {
+      "subject": "反応",
+      "object": "するて"
+    },
+    {
+      "subject": "動くこと",
+      "object": ""
+    },
+    {
+      "subject": "繋がるている",
+      "object": "ノードが"
+    },
+    {
+      "subject": "まとまること",
+      "object": ""
+    },
+    {
+      "subject": "エッジで",
+      "object": "繋ぐと"
+    },
+    {
+      "subject": "繋ぐと",
+      "object": "、"
+    }
+  ]
+}
+
+
+for (const {subject, object} of dict.edges) {
+  add(subject, object)
+}
+
+// var dennis = graph.newNode({label: 'Dennis'});
+// var michael = graph.newNode({label: '日本語'});
+// var jessica = graph.newNode({label: 'Jessica'});
+// var timothy = graph.newNode({label: 'Timothy'});
+// var barbara = graph.newNode({label: 'Barbara'});
+// var franklin = graph.newNode({label: 'Franklin'});
+// var monty = graph.newNode({label: 'Monty'});
+// var james = graph.newNode({label: 'James'});
+// var bianca = graph.newNode({label: 'Bianca'});
+//
+// graph.newEdge(dennis, michael, {color: '#00A0B0'});
+// graph.newEdge(michael, dennis, {color: '#6A4A3C'});
+// graph.newEdge(michael, jessica, {color: '#CC333F'});
+// graph.newEdge(jessica, barbara, {color: '#EB6841'});
+// graph.newEdge(michael, timothy, {color: '#EDC951'});
+// graph.newEdge(franklin, monty, {color: '#7DBE3C'});
+// graph.newEdge(dennis, monty, {color: '#000000'});
+// graph.newEdge(monty, james, {color: '#00A0B0'});
+// graph.newEdge(barbara, timothy, {color: '#6A4A3C'});
+// graph.newEdge(dennis, bianca, {color: '#CC333F'});
+// graph.newEdge(bianca, monty, {color: '#EB6841'});
+
+jQuery(function(){
+  var springy = window.springy = jQuery('#springydemo').springy({
+    graph: graph,
+    nodeSelected: function(node){
+      console.log('Node selected: ' + JSON.stringify(node.data));
+    }
+  });
+});
+</script>
+
+<canvas id="springydemo" width="1200" height="600" />
+</body>
+</html>
