@@ -18,6 +18,8 @@
 
 - 咳マニアは真似をする
 - テスト手順と誤解
+- そこにテスト手順書があった
+https://github.com/lodqa/grapheditor/wiki/User-Acceptance-Test
 
 ---
 
