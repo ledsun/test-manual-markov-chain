@@ -5,7 +5,7 @@ const markov = require('../index.js')
 const m = markov(3)
 
 // var s = fs.createReadStream(__dirname + '/qwantz.txt');
-const s = fs.createReadStream(path.join(__dirname, '/../../grapheditor.wiki/User-Acceptance-Test.md'))
+const s = fs.createReadStream(path.join(__dirname, '/../../../grapheditor.wiki/User-Acceptance-Test.md'))
 m.seed(s, (db, tokenizer) => {
   const stdin = process.openStdin()
 
